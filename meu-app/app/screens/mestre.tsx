@@ -1,21 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-type tipoDaListaDeParametros = {
-  mestre: undefined;
-  detalhe: { id: number; nome: string; preco: number };
-};
+import { useRouter } from 'expo-router';
 
 export default function PaginaMestra() {
-  const navigation = useNavigation<NativeStackNavigationProp<tipoDaListaDeParametros>>();
+  const router = useRouter();
 
   const handleNavigate = () => {
     const dado = { id: 123, nome: 'Produto X', preco: 199.99 };
 
-    // Em React Native com React Navigation, passamos os parâmetros diretamente:
-    navigation.navigate('detalhe', dado);
+    // Em expo-router, usamos router.push com pathname + params
+    router.push({ pathname: './screens/detalhe', params: dado });
   };
 
   return (

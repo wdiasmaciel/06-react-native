@@ -1,19 +1,14 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-type tipoDaListaDeParametros = {
-  mestre: undefined;
-  detalhe: { id: number; nome: string; preco: number };
-};
+import { useRouter, useLocalSearchParams } from 'expo-router';
 
 export default function PaginaDeDetalhe() {
-  const route = useRoute();
-  const navigation = useNavigation<NativeStackNavigationProp<tipoDaListaDeParametros>>();
+  // usando expo-router para navegação baseada em arquivos
+  const router = useRouter();
+  const params = useLocalSearchParams();
 
-  // Parâmetros recebidos via navigation.navigate('detalhe', params)
-  const { id, nome, preco } = (route.params as { id: number; nome: string; preco: number }) || {};
+  // Parâmetros recebidos via router.push
+  const { id, nome, preco } = (params as { id?: number | string; nome?: string; preco?: number | string }) || {};
 
   return (
     <View style={styles.container}>
@@ -29,7 +24,7 @@ export default function PaginaDeDetalhe() {
 
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => navigation.navigate('mestre')}
+        onPress={() => router.push('./screens/mestre')}
       >
         <Text style={styles.textoBotao}>Voltar para a Página Mestra</Text>
       </TouchableOpacity>

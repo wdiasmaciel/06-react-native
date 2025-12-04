@@ -5,17 +5,18 @@ import { useRouter } from 'expo-router';
 export default function PaginaMestra() {
   const router = useRouter();
 
-  const handleNavigate = () => {
+  const handleNavigation = () => {
     const dado = { id: 123, nome: 'Produto X', preco: 199.99 };
 
-    // Em expo-router, usamos router.push com pathname + params
+    // Em expo-router, usamos router.push com pathname e params:
     router.push({ pathname: './detalhe', params: dado });
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Página Mestra</Text>
-      <TouchableOpacity style={styles.botao} onPress={handleNavigate}>
+
+      <TouchableOpacity style={styles.botao} onPress={handleNavigation}>
         <Text style={styles.textoBotao}>
           Ir para a página de Detalhes do Produto
         </Text>

@@ -24,7 +24,7 @@ export default function PaginaDeDetalhe() {
 
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => router.push('./screens/mestre')}
+        onPress={() => router.push('./mestre')}
       >
         <Text style={styles.textoBotao}>Voltar para a Página Mestra</Text>
       </TouchableOpacity>

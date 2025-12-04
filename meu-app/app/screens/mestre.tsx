@@ -9,7 +9,7 @@ export default function PaginaMestra() {
     const dado = { id: 123, nome: 'Produto X', preco: 199.99 };
 
     // Em expo-router, usamos router.push com pathname + params
-    router.push({ pathname: './screens/detalhe', params: dado });
+    router.push({ pathname: './detalhe', params: dado });
   };
 
   return (
